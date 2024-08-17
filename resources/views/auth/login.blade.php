@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="Inicio de sesión del sistema" />
     <meta name="author" content="SakCode" />
-    <title>Car & Repuestos Services</title>
+    <title>Car: Accesorios & Repuestos</title>
     <style>
         body {
             background-image: url("{{ asset('assets/img/background.jpeg') }}");
@@ -73,7 +73,7 @@
 
                 <!-- Copyright -->
                 <div class="text-center p-3 bg-warning">
-                    © 2024 Car & Repuestos Service:
+                    ©2024 Car: Accesorios & Repuestos
                 </div>
                 <!-- Copyright -->
             </footer>

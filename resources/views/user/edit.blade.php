@@ -8,21 +8,21 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center">Editar Usuario</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('panel') }}">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('users.index')}}">Usuarios</a></li>
-        <li class="breadcrumb-item active">Editar Usuario</li>
-    </ol>
 
-    <div class="card text-bg-light">
+    <ul class="pagination pt-3 pb-5">
+        <li class="page-item"><a class="page-link" href="{{ route('panel') }}">Inicio</a></li>
+        <li class="page-item"><a class="page-link" href="{{ route('users.index') }}">Usuarios</a></li>
+        <li class="page-item active" aria-current="page">
+        <span class="page-link">Editar Usuario</span>
+        </li>
+    </ul>
+
+    <div class="card bg-primary p-2 text-dark bg-opacity-25">
+    <h1 class="mt-4 text-center">Editar Usuario</h1>
         <form action="{{ route('users.update',['user' => $user]) }}" method="post">
             @method('PATCH')
             @csrf
-            <div class="card-header">
-                <p class="">Nota: Los usuarios son los que pueden ingresar al sistema</p>
-            </div>
-            <div class="card-body">
+            <div class="card-body p-5 text-dark">
                 <!---Nombre---->
                 <div class="row mb-4">
                     <label for="name" class="col-lg-2 col-form-label">Nombres:</label>
@@ -123,7 +123,7 @@
 
             </div>
             <div class="card-footer text-center">
-                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <button type="submit" class="btn btn-outline-success">Actualizar Datos</button>
             </div>
         </form>
     </div>

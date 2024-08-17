@@ -8,23 +8,26 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center">Editar Proveedor</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('panel') }}">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('proveedores.index')}}">Proveedores</a></li>
-        <li class="breadcrumb-item active">Editar proveedor</li>
-    </ol>
+    
+    <ul class="pagination pt-3 pb-5">
+        <li class="page-item"><a class="page-link" href="{{ route('panel') }}">Inicio</a></li>
+        <li class="page-item"><a class="page-link" href="{{ route('proveedores.index')}}">Proveedores</a></li>
+        <li class="page-item active" aria-current="page">
+        <span class="page-link">Editar proveedor</span>
+        </li>
+    </ul>
 
-    <div class="card text-bg-light">
+    <div class="card text-light bg-success bg-opacity-50">
+        <h1 class="mt-4 text-center">Editar Proveedor</h1>
         <form action="{{ route('proveedores.update',['proveedore'=>$proveedore]) }}" method="post">
             @method('PATCH')
             @csrf
-            <div class="card-header">
+            <div class="card-header d-grid col-6 mx-auto">
                 <p>Tipo de proveedor: <span class="fw-bold">{{ strtoupper($proveedore->persona->tipo_persona)}}</span></p>
             </div>
-            <div class="card-body">
+            <div class="row g-3 d-grid col-6 mx-auto">
 
-                <div class="row g-3">
+                <div class="row g-3 mb-5">
 
                     <!-------Razón social------->
                     <div class="col-12">
@@ -78,7 +81,7 @@
 
             </div>
             <div class="card-footer text-center">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-outline-primary">Actualizar Registro</button>
             </div>
         </form>
     </div>

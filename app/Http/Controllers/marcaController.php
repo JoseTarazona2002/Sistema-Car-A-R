@@ -82,7 +82,7 @@ class marcaController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Funcion para el registro de marca segun su Id.
      */
     public function destroy(string $id)
     {

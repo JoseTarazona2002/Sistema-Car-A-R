@@ -23,8 +23,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
-        'img_path'
+        'password'
     ];
 
     /**
@@ -48,15 +47,5 @@ class User extends Authenticatable
 
     public function ventas(){
         return $this->hasMany(Venta::class);
-    }
-
-    public function handleUploadImage($image)
-    {
-        $file = $image;
-        $name = time() . $file->getClientOriginalName();
-        
-        Storage::putFileAs('/public/usuarios/',$file,$name,'public');
-
-        return $name;
     }
 }

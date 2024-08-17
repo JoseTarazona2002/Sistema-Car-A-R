@@ -10,43 +10,45 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center">Realizar Venta</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('panel') }}">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('ventas.index')}}">Ventas</a></li>
-        <li class="breadcrumb-item active">Realizar Venta</li>
-    </ol>
+    <ul class="pagination pt-3 pb-5">
+        <li class="page-item"><a class="page-link" href="{{ route('panel') }}">Inicio</a></li>
+        <li class="page-item"><a class="page-link" href="{{ route('ventas.index') }}">Ventas</a></li>
+        <li class="page-item active" aria-current="page">
+        <span class="page-link">Realizar Venta</span>
+        </li>
+    </ul>
 </div>
 
 <form action="{{ route('ventas.store') }}" method="post">
     @csrf
-    <div class="container-lg mt-4">
-        <div class="row gy-4">
-
-            <!------venta producto---->
-            <div class="col-xl-8">
-                <div class="text-white bg-primary p-1 text-center">
-                    Detalles de la venta
-                </div>
-                <div class="p-3 border border-3 border-primary">
-                    <div class="row gy-4">
-
-                        <!-----Producto---->
+    
+    <div class="container-lg">
+        <h1 class="text-center">Generar Venta</h1>
+        <div class="row m-5">
+            
+            <div class="row border border-1 border-primary">
+                <h4 class="p-2 mb-2 text-white bg-primary">Datos de la Venta</h4>
+                <div class="col-6">
+                    
+                    <div class="p-1">
+                        <div class="row">
+                            <!-----Producto---->
                         <div class="col-12">
-                            <select name="producto_id" id="producto_id" class="form-control selectpicker" data-live-search="true" data-size="1" title="Busque un producto aquí">
+                            <label for="producto_id" class="col-form-label col-4">Producto:</label>
+                            <select name="producto_id" id="producto_id" class="form-control selectpicker border-primary" data-live-search="true" data-size="1" title="Seleccione un Producto">
                                 @foreach ($productos as $item)
-                                <option value="{{$item->id}}-{{$item->stock}}-{{$item->precio_venta}}">{{$item->codigo.' '.$item->nombre}}</option>
+                                <option class="bg-success-subtle" value="{{$item->id}}-{{$item->stock}}-{{$item->precio_venta}}">{{$item->codigo.' '.$item->nombre}}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <!-----Stock--->
-                        <div class="d-flex justify-content-end">
+                        <div class="d-flex justify-content-end mt-2">
                             <div class="col-12 col-sm-6">
                                 <div class="row">
                                     <label for="stock" class="col-form-label col-4">Stock:</label>
                                     <div class="col-8">
-                                        <input disabled id="stock" type="text" class="form-control">
+                                        <input disabled id="stock" type="text" class="form-control border-primary">
                                     </div>
                                 </div>
                             </div>
@@ -55,31 +57,32 @@
                         <!-----Precio de venta---->
                         <div class="col-sm-4">
                             <label for="precio_venta" class="form-label">Precio de venta:</label>
-                            <input disabled type="number" name="precio_venta" id="precio_venta" class="form-control" step="0.1">
+                            <input disabled type="number" name="precio_venta" id="precio_venta" class="form-control border-primary" step="0.1">
                         </div>
 
                         <!-----Cantidad---->
                         <div class="col-sm-4">
                             <label for="cantidad" class="form-label">Cantidad:</label>
-                            <input type="number" name="cantidad" id="cantidad" class="form-control">
+                            <input type="number" name="cantidad" id="cantidad" class="form-control border-primary">
                         </div>
 
                         <!----Descuento---->
                         <div class="col-sm-4">
                             <label for="descuento" class="form-label">Descuento:</label>
-                            <input type="number" name="descuento" id="descuento" class="form-control">
+                            <input type="number" name="descuento" id="descuento" class="form-control border-primary">
                         </div>
-
-                        <!-----botón para agregar--->
-                        <div class="col-12 text-end">
-                            <button id="btn_agregar" class="btn btn-primary" type="button">Agregar</button>
+                        
+                            <button id="btn_agregar" class="m-2 btn btn-outline-primary">Calcular</button>
+                        
                         </div>
+                    </div>
+                </div>
 
-                        <!-----Tabla para el detalle de la venta--->
-                        <div class="col-12">
+                <div class="col-6">
+                    <div class="col-12">
                             <div class="table-responsive">
-                                <table id="tabla_detalle" class="table table-hover">
-                                    <thead class="bg-primary">
+                                <table id="tabla_detalle" class="table table-hover table-bordered border-dark">
+                                    <thead class="bg-dark">
                                         <tr>
                                             <th class="text-white">#</th>
                                             <th class="text-white">Producto</th>
@@ -92,7 +95,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th></th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-25"></th>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -103,19 +106,19 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th></th>
-                                            <th colspan="4">Sumas</th>
-                                            <th colspan="2"><span id="sumas">0</span></th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-25"></th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-25" colspan="4">Sumas</th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-10" colspan="2"><span id="sumas">0</span></th>
                                         </tr>
                                         <tr>
-                                            <th></th>
-                                            <th colspan="4">IGV %</th>
-                                            <th colspan="2"><span id="igv">0</span></th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-25"></th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-25" colspan="4">IGV %</th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-10" colspan="2"><span id="igv">0</span></th>
                                         </tr>
                                         <tr>
-                                            <th></th>
-                                            <th colspan="4">Total</th>
-                                            <th colspan="2"> <input type="hidden" name="total" value="0" id="inputTotal"> <span id="total">0</span></th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-25"></th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-25" colspan="4">Total</th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-10" colspan="2"> <input type="hidden" name="total" value="0" id="inputTotal"> <span id="total">0</span></th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -128,24 +131,23 @@
                                 Cancelar venta
                             </button>
                         </div>
-
-                    </div>
                 </div>
             </div>
-
-            <!-----Venta---->
-            <div class="col-xl-4">
-                <div class="text-white bg-success p-1 text-center">
-                    Datos generales
+            
+            <div class="row gy-4 m-5 mx-auto d-grid">
+                <div class="col-10 text-white bg-info p-1 mx-auto d-grid">
+                    <h4>Generar Comprobante</h4>
                 </div>
-                <div class="p-3 border border-3 border-success">
+
+                <div class="col-10 mx-auto d-grid">
+                <div class="p-3 border border-1 border-info">
                     <div class="row gy-4">
                         <!--Cliente-->
-                        <div class="col-12">
+                        <div class="col-6">
                             <label for="cliente_id" class="form-label">Cliente:</label>
-                            <select name="cliente_id" id="cliente_id" class="form-control selectpicker show-tick" data-live-search="true" title="Selecciona" data-size='2'>
+                            <select name="cliente_id" id="cliente_id" class="form-control selectpicker show-tick" data-live-search="true" title="Selecciona un cliente" data-size='2'>
                                 @foreach ($clientes as $item)
-                                <option value="{{$item->id}}">{{$item->persona->razon_social}}</option>
+                                <option class="bg-success-subtle" value="{{$item->id}}">{{$item->persona->razon_social}}</option>
                                 @endforeach
                             </select>
                             @error('cliente_id')
@@ -154,11 +156,11 @@
                         </div>
 
                         <!--Tipo de comprobante-->
-                        <div class="col-12">
-                            <label for="comprobante_id" class="form-label">Comprobante:</label>
-                            <select name="comprobante_id" id="comprobante_id" class="form-control selectpicker" title="Selecciona">
+                        <div class="col-6">
+                            <label for="comprobante_id" class="form-label">Tipo de Comprobante:</label>
+                            <select name="comprobante_id" id="comprobante_id" class="form-control selectpicker" title="Selecciona un Tipo">
                                 @foreach ($comprobantes as $item)
-                                <option value="{{$item->id}}">{{$item->tipo_comprobante}}</option>
+                                <option class="bg-success-subtle" value="{{$item->id}}">{{$item->tipo_comprobante}}</option>
                                 @endforeach
                             </select>
                             @error('comprobante_id')
@@ -167,9 +169,9 @@
                         </div>
 
                         <!--Numero de comprobante-->
-                        <div class="col-12">
+                        <div class="col-6">
                             <label for="numero_comprobante" class="form-label">Numero de comprobante:</label>
-                            <input required type="text" name="numero_comprobante" id="numero_comprobante" class="form-control">
+                            <input required type="text" name="numero_comprobante" id="numero_comprobante" class="form-control border-info">
                             @error('numero_comprobante')
                             <small class="text-danger">{{ '*'.$message }}</small>
                             @enderror
@@ -178,7 +180,7 @@
                         <!--Impuesto---->
                         <div class="col-sm-6">
                             <label for="impuesto" class="form-label">Impuesto(IGV):</label>
-                            <input readonly type="text" name="impuesto" id="impuesto" class="form-control border-success">
+                            <input readonly type="text" name="impuesto" id="impuesto" class="form-control border-info">
                             @error('impuesto')
                             <small class="text-danger">{{ '*'.$message }}</small>
                             @enderror
@@ -187,7 +189,7 @@
                         <!--Fecha--->
                         <div class="col-sm-6">
                             <label for="fecha" class="form-label">Fecha:</label>
-                            <input readonly type="date" name="fecha" id="fecha" class="form-control border-success" value="<?php echo date("Y-m-d") ?>">
+                            <input readonly type="date" name="fecha" id="fecha" class="form-control border-info" value="<?php echo date("Y-m-d") ?>">
                             <?php
 
                             use Carbon\Carbon;
@@ -204,32 +206,31 @@
                         <div class="col-12 text-center">
                             <button type="submit" class="btn btn-success" id="guardar">Realizar venta</button>
                         </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    <!-- Modal para cancelar la venta -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Advertencia</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Seguro que quieres cancelar la venta?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button id="btnCancelarVenta" type="button" class="btn btn-danger" data-bs-dismiss="modal">Confirmar</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Modal para cancelar la venta -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Advertencia</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ¿Seguro que quieres cancelar la venta?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button id="btnCancelarVenta" type="button" class="btn btn-danger" data-bs-dismiss="modal">Confirmar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </form>
 @endsection
 

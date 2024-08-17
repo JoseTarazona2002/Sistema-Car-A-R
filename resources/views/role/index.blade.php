@@ -13,27 +13,30 @@
 @include('layouts.partials.alert')
 
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center">Roles</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('panel') }}">Inicio</a></li>
-        <li class="breadcrumb-item active">Roles</li>
-    </ol>
+
+    <ul class="pagination pt-3 pb-5">
+        <li class="page-item"><a class="page-link" href="{{ route('panel') }}">Inicio</a></li>
+        <li class="page-item active" aria-current="page">
+        <span class="page-link">Roles</span>
+        </li>
+    </ul>
 
     @can('crear-role')
-    <div class="mb-4">
+    <div class="row g-3">
+        <div class="col-auto">
+        <h1 class="text-center">Roles</h1>
+        </div>
+        <div class="col-auto pt-2">
         <a href="{{route('roles.create')}}">
-            <button type="button" class="btn btn-primary">Añadir nuevo rol</button>
-        </a>
+                <button type="button" class="btn btn-primary">Añadir nuevo Rol</button>
+            </a>
+        </div>
     </div>
     @endcan
 
     <div class="card">
-        <div class="card-header">
-            <i class="fas fa-table me-1"></i>
-            Tabla roles
-        </div>
         <div class="card-body">
-            <table id="datatablesSimple" class="table table-striped fs-6">
+            <table id="datatablesSimple" class="table table-bordered border-primary table-success">
                 <thead>
                     <tr>
                         <th>Rol</th>
@@ -97,6 +100,6 @@
 @endsection
 
 @push('js')
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
+<script src="{{ asset('js/simple-datatables@latest.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/datatables-simple-demo.js') }}"></script>
 @endpush

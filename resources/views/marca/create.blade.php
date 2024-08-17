@@ -12,21 +12,24 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center">Crear Marca</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('panel') }}">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('marcas.index')}}">Marcas</a></li>
-        <li class="breadcrumb-item active">Crear Marca</li>
-    </ol>
 
-    <div class="card">
+    <ul class="pagination pt-3 pb-5">
+        <li class="page-item"><a class="page-link" href="{{ route('panel') }}">Inicio</a></li>
+        <li class="page-item"><a class="page-link" href="{{ route('marcas.index')}}">Marcas</a></li>
+        <li class="page-item active" aria-current="page">
+        <span class="page-link">Crear Marca</span>
+        </li>
+    </ul>
+
+    <div class="card bg-success p-2 text-dark bg-opacity-10">
+    <h1 class="mt-4 text-center">Añadir Marca</h1>
         <form action="{{ route('marcas.store') }}" method="post">
             @csrf
-            <div class="card-body text-bg-light">
+            <div class="card-body text-bg-light bg-success p-2 text-dark bg-opacity-50">
 
-                <div class="row g-4">
+                <div class="row g-3 d-grid col-6 mx-auto">
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="nombre" class="form-label">Nombre:</label>
                         <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre')}}">
                         @error('nombre')
@@ -45,7 +48,7 @@
 
             </div>
             <div class="card-footer text-center">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-outline-primary">Guardar Marca</button>
             </div>
         </form>
     </div>

@@ -10,31 +10,37 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center">Crear Compra</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('panel') }}">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('compras.index')}}">Compras</a></li>
-        <li class="breadcrumb-item active">Crear Compra</li>
-    </ol>
+
+    <ul class="pagination pt-3">
+        <li class="page-item"><a class="page-link" href="{{ route('panel') }}">Inicio</a></li>
+        <li class="page-item"><a class="page-link" href="{{ route('compras.index') }}">Compras</a></li>
+        <li class="page-item active" aria-current="page">
+        <span class="page-link">Crear Compra</span>
+        </li>
+    </ul>
 </div>
 
 <form action="{{ route('compras.store') }}" method="post">
     @csrf
-
+    
     <div class="container-lg mt-4">
-        <div class="row gy-4">
-            <!------Compra producto---->
-            <div class="col-xl-8">
-                <div class="text-white bg-primary p-1 text-center">
-                    Detalles de la compra
+        <h1 class="text-center">Generar Compra</h1>
+        <div class="row gy-4 m-5 border border-1 border-primary">
+        
+        <div class="col-12 text-white bg-primary p-1 border border-1 border-primary">
+                    <h4>Datos de la compra</h4>
                 </div>
-                <div class="p-3 border border-3 border-primary">
+            <!------Compra producto---->
+            <div class="col-6">
+                
+                <div class="p-3">
                     <div class="row">
                         <!-----Producto---->
                         <div class="col-12 mb-4">
-                            <select name="producto_id" id="producto_id" class="form-control selectpicker" data-live-search="true" data-size="1" title="Busque un producto aquí">
+                        <label for="producto_id" class="form-label">Producto:</label>
+                            <select name="producto_id" id="producto_id" class="form-control selectpicker" data-live-search="true" data-size="1" title="Seleccione un producto">
                                 @foreach ($productos as $item)
-                                <option value="{{$item->id}}">{{$item->codigo.' '.$item->nombre}}</option>
+                                <option class="bg-success-subtle" value="{{$item->id}}">{{$item->nombre}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -42,31 +48,38 @@
                         <!-----Cantidad---->
                         <div class="col-sm-4 mb-2">
                             <label for="cantidad" class="form-label">Cantidad:</label>
-                            <input type="number" name="cantidad" id="cantidad" class="form-control">
+                            <input type="number" name="cantidad" id="cantidad" class="form-control border-primary">
                         </div>
 
                         <!-----Precio de compra---->
                         <div class="col-sm-4 mb-2">
                             <label for="precio_compra" class="form-label">Precio de compra:</label>
-                            <input type="number" name="precio_compra" id="precio_compra" class="form-control" step="0.1">
+                            <input type="number" name="precio_compra" id="precio_compra" class="form-control border-primary" step="0.1">
                         </div>
 
                         <!-----Precio de venta---->
                         <div class="col-sm-4 mb-2">
                             <label for="precio_venta" class="form-label">Precio de venta:</label>
-                            <input type="number" name="precio_venta" id="precio_venta" class="form-control" step="0.1">
+                            <input type="number" name="precio_venta" id="precio_venta" class="form-control border-primary" step="0.1">
                         </div>
 
                         <!-----botón para agregar--->
-                        <div class="col-12 mb-4 mt-2 text-end">
-                            <button id="btn_agregar" class="btn btn-primary" type="button">Agregar</button>
-                        </div>
+                        
+                            <button id="btn_agregar" class="btn btn-outline-primary" type="button">Calcular</button>
+                        
 
-                        <!-----Tabla para el detalle de la compra--->
-                        <div class="col-12">
+                        
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <!-----Tabla para el detalle de la compra--->
+                <div class="col-12">
                             <div class="table-responsive">
-                                <table id="tabla_detalle" class="table table-hover">
-                                    <thead class="bg-primary">
+                                <table id="tabla_detalle" class="table table-hover table-bordered border-dark">
+                                    <thead class="bg-dark ">
                                         <tr>
                                             <th class="text-white">#</th>
                                             <th class="text-white">Producto</th>
@@ -79,7 +92,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th></th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-25"></th>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -90,19 +103,19 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th></th>
-                                            <th colspan="4">Sumas</th>
-                                            <th colspan="2"><span id="sumas">0</span></th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-25"></th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-25" colspan="4">Sumas</th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-10" colspan="2"><span id="sumas">0</span></th>
                                         </tr>
                                         <tr>
-                                            <th></th>
-                                            <th colspan="4">IGV %</th>
-                                            <th colspan="2"><span id="igv">0</span></th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-25"></th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-25" colspan="4">IGV %</th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-10" colspan="2"><span id="igv">0</span></th>
                                         </tr>
                                         <tr>
-                                            <th></th>
-                                            <th colspan="4">Total</th>
-                                            <th colspan="2"> <input type="hidden" name="total" value="0" id="inputTotal"> <span id="total">0</span></th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-25"></th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-25" colspan="4">Total</th>
+                                            <th class="bg-success p-2 text-dark bg-opacity-10" colspan="2"> <input type="hidden" name="total" value="0" id="inputTotal"> <span id="total">0</span></th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -110,29 +123,29 @@
                         </div>
 
                         <!--Boton para cancelar compra-->
-                        <div class="col-12 mt-2">
+                        <div class="col-12 mt-2 mb-2">
                             <button id="cancelar" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Cancelar compra
                             </button>
                         </div>
-
-                    </div>
-                </div>
             </div>
-
-            <!-----Compra---->
-            <div class="col-xl-4">
-                <div class="text-white bg-success p-1 text-center">
-                    Datos generales
+        </div>
+        
+        <div class="row gy-4 m-5 mx-auto d-grid">
+            <div class="col-10 text-white bg-info p-2 mx-auto d-grid">
+                    <h4>Generar Comprobante</h4>
                 </div>
-                <div class="p-3 border border-3 border-success">
+            <!-----Compra---->
+            <div class="col-10 mx-auto d-grid">
+                
+                <div class="p-3 border border-1 border-info">
                     <div class="row">
                         <!--Proveedor-->
-                        <div class="col-12 mb-2">
+                        <div class="col-6 mb-2">
                             <label for="proveedore_id" class="form-label">Proveedor:</label>
-                            <select name="proveedore_id" id="proveedore_id" class="form-control selectpicker show-tick" data-live-search="true" title="Selecciona" data-size='2'>
+                            <select name="proveedore_id" id="proveedore_id" class="form-control selectpicker show-tick border-info" data-live-search="true" title="Seleccione un Proveedor" data-size='2'>
                                 @foreach ($proveedores as $item)
-                                <option value="{{$item->id}}">{{$item->persona->razon_social}}</option>
+                                <option class="border-info bg-warning-subtle" value="{{$item->id}}">{{$item->persona->razon_social}}</option>
                                 @endforeach
                             </select>
                             @error('proveedore_id')
@@ -141,11 +154,11 @@
                         </div>
 
                         <!--Tipo de comprobante-->
-                        <div class="col-12 mb-2">
-                            <label for="comprobante_id" class="form-label">Comprobante:</label>
-                            <select name="comprobante_id" id="comprobante_id" class="form-control selectpicker" title="Selecciona">
+                        <div class="col-6 mb-2">
+                            <label for="comprobante_id" class="form-label">Tipo de Comprobante:</label>
+                            <select name="comprobante_id" id="comprobante_id" class="form-control selectpicker" title="Seleccione un Tipo">
                                 @foreach ($comprobantes as $item)
-                                <option value="{{$item->id}}">{{$item->tipo_comprobante}}</option>
+                                <option class="bg-warning-subtle" value="{{$item->id}}">{{$item->tipo_comprobante}}</option>
                                 @endforeach
                             </select>
                             @error('comprobante_id')
@@ -154,9 +167,9 @@
                         </div>
 
                         <!--Numero de comprobante-->
-                        <div class="col-12 mb-2">
+                        <div class="col-6 mb-2">
                             <label for="numero_comprobante" class="form-label">Numero de comprobante:</label>
-                            <input required type="text" name="numero_comprobante" id="numero_comprobante" class="form-control">
+                            <input required type="text" name="numero_comprobante" id="numero_comprobante" class="form-control border-info">
                             @error('numero_comprobante')
                             <small class="text-danger">{{ '*'.$message }}</small>
                             @enderror
@@ -165,7 +178,7 @@
                         <!--Impuesto---->
                         <div class="col-sm-6 mb-2">
                             <label for="impuesto" class="form-label">Impuesto(IGV):</label>
-                            <input readonly type="text" name="impuesto" id="impuesto" class="form-control border-success">
+                            <input readonly type="text" name="impuesto" id="impuesto" class="form-control border-info">
                             @error('impuesto')
                             <small class="text-danger">{{ '*'.$message }}</small>
                             @enderror
@@ -174,14 +187,14 @@
                         <!--Fecha--->
                         <div class="col-sm-6 mb-2">
                             <label for="fecha" class="form-label">Fecha:</label>
-                            <input readonly type="date" name="fecha" id="fecha" class="form-control border-success" value="<?php echo date("Y-m-d") ?>">
+                            <input readonly type="date" name="fecha" id="fecha" class="form-control border-info" value="<?php echo date("Y-m-d") ?>">
                             <?php
 
                             use Carbon\Carbon;
 
                             $fecha_hora = Carbon::now()->toDateTimeString();
                             ?>
-                            <input type="hidden" name="fecha_hora" value="{{$fecha_hora}}">
+                            <input class="border-info" type="hidden" name="fecha_hora" value="{{$fecha_hora}}">
                         </div>
 
                         <!--Botones--->

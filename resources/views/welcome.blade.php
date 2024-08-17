@@ -9,7 +9,7 @@
     clientes, proveedores, productos, categorías, etc. Ideal para pequeños y medianos negocios que deesen 
     automatizar sus procesos y tener a la mano cualquier información sobre su negocio" />
     <meta name="author" content="SakCode" />
-    <title>Car & Repuestos Services</title>
+    <title>Car: Accesorios & Repuestos</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
@@ -23,7 +23,7 @@
             <img src="{{ asset('assets/img/file.png') }}" alt="Logo" height="80" class="d-inline-block align-text-top">
             <a class="navbar-brand text-dark fst-italic fs-2" href="{{route('panel')}}">
                 
-                Car & Repuestos Services
+            Car: Accesorios & Repuestos
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -36,10 +36,7 @@
                         <a class="nav-link active" aria-current="page" href="{{route('panel')}}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Servicios</a>
+                        <a class="nav-link" href="{{route('lista')}}">Productos</a>
                     </li>
                 </ul>
 
@@ -60,15 +57,15 @@
             </div>
             <div class="col-md-8 mt-5">
             <div class="card-body mt-5 ms-5">
-            <h1 class="card-title fst-italic">Car & Repuestos Services</h1>
+            <h1 class="card-title fst-italic">Car: Accesorios & Repuestos</h1>
                     <h3 class="text-primary mt-5">Visión:</h3>
                     <p class="fs-5">
-                    Nuestra visión es ser la empresa líder en repuestos y servicios automotrices, reconocida por nuestra calidad, innovación y compromiso con la satisfacción del cliente. Aspiramos a expandirnos regional y nacionalmente, ofreciendo soluciones confiables que faciliten el mantenimiento y mejora de vehículos, y ser la primera opción para conductores y entusiastas del automóvil.
+                    Nuestra visión es ser la empresa líder en accesorios y repuestos automotrices, reconocida por nuestra calidad, innovación y compromiso con la satisfacción del cliente. Aspiramos a expandirnos regional y nacionalmente, ofreciendo soluciones confiables que faciliten el mantenimiento y mejora de vehículos, y ser la primera opción para conductores y entusiastas del automóvil.
                     </p>
 
                     <h3 class="text-success mt-5">Misión:</h3>
                     <p class="fs-5">
-                    En Car Repuestos & Services, ofrecemos repuestos y servicios automotrices de alta calidad con atención personalizada e innovadora. Nos comprometemos a mantener la integridad y rendimiento de los vehículos de nuestros clientes, buscando ser su socio confiable a largo plazo.
+                    En Car Accesorios & Repuestos, ofrecemos productos automotrices de alta calidad con atención personalizada e innovadora. Nos comprometemos a mantener la integridad y rendimiento de los vehículos de nuestros clientes, buscando ser su socio confiable a largo plazo.
                     </p>
             </div>
             </div>
@@ -82,7 +79,7 @@
 
         <!-- Copyright -->
         <div class="text-center p-3 bg-warning">
-            © 2024 Car & Repuestos Service:
+            ©2024 Car: Accesorios & Repuestos
         </div>
         <!-- Copyright -->
     </footer>

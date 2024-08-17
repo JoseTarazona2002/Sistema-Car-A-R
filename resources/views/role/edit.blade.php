@@ -8,36 +8,26 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center">Editar Rol</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('panel') }}">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('roles.index')}}">Roles</a></li>
-        <li class="breadcrumb-item active">Editar rol</li>
-    </ol>
 
-    <div class="card">
-        <div class="card-header">
-            <p>Nota: Los roles son un conjunto de permisos</p>
-        </div>
+    <ul class="pagination pt-3 pb-5">
+        <li class="page-item"><a class="page-link" href="{{ route('panel') }}">Inicio</a></li>
+        <li class="page-item"><a class="page-link" href="{{ route('roles.index')}}">Roles</a></li>
+        <li class="page-item active" aria-current="page">
+        <span class="page-link">Editar Rol</span>
+        </li>
+    </ul>
+
+    <div class="card bg-warning p-2 text-dark bg-opacity-10">
+    <h1 class="mt-4 text-center">Editar Permisos</h1>
         <div class="card-body">
+
             <form action="{{ route('roles.update',['role'=>$role]) }}" method="post">
                 @method('PATCH')
                 @csrf
-                <!---Nombre de rol---->
-                <div class="row mb-4">
-                    <label for="name" class="col-md-auto col-form-label">Nombre del rol:</label>
-                    <div class="col-md-4">
-                        <input type="text" name="name" id="name" class="form-control" value="{{old('name',$role->name)}}">
-                    </div>
-                    <div class="col-md-4">
-                        @error('name')
-                        <small class="text-danger">{{'*'.$message}}</small>
-                        @enderror
-                    </div>
-                </div>
+                
 
                 <!---Permisos---->
-                <div class="col-12">
+                <div class="row mx-auto mb-4 mt-2 bg-info p-5 bg-opacity-10">
                     <p class="text-muted">Permisos para el rol:</p>
                     @foreach ($permisos as $item)
                     @if ( in_array($item->id, $role->permissions->pluck('id')->toArray() ) )
@@ -57,10 +47,18 @@
                 <small class="text-danger">{{'*'.$message}}</small>
                 @enderror
 
-
-                <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
-                    <button type="reset" class="btn btn-secondary">Reiniciar</button>
+                <!---Nombre de rol---->
+                <div class="row mx-auto mb-4 mt-2 bg-info p-5 bg-opacity-10">
+                    <label for="name" class="col-md-auto col-form-label">Nombre del rol:</label>
+                    <div class="col-md-4">
+                        <input type="text" name="name" id="name" class="form-control" value="{{old('name',$role->name)}}">
+                        @error('name')
+                        <small class="text-danger">{{'*'.$message}}</small>
+                        @enderror
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-outline-primary">Actualizar Permisos</button>
+                    </div>
                 </div>
 
             </form>

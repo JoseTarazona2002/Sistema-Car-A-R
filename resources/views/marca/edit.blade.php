@@ -12,22 +12,25 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center">Editar Marca</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('panel') }}">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('marcas.index')}}">Marca</a></li>
-        <li class="breadcrumb-item active">Editar Marca</li>
-    </ol>
 
-    <div class="card">
+    <ul class="pagination pt-3 pb-5">
+        <li class="page-item"><a class="page-link" href="{{ route('panel') }}">Inicio</a></li>
+        <li class="page-item"><a class="page-link" href="{{ route('marcas.index')}}">Marcas</a></li>
+        <li class="page-item active" aria-current="page">
+        <span class="page-link">Editar Marca</span>
+        </li>
+    </ul>
+
+    <div class="card text-light bg-success bg-opacity-50">
+    <h1 class="mt-4 text-center">Editar Marca</h1>
         <form action="{{ route('marcas.update',['marca'=>$marca]) }}" method="post">
             @method('PATCH')
             @csrf
-            <div class="card-body text-bg-light">
+            <div class="card-body g-3 d-grid col-6 mx-auto">
 
                 <div class="row g-4">
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="nombre" class="form-label">Nombre:</label>
                         <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre',$marca->caracteristica->nombre)}}">
                         @error('nombre')
@@ -46,8 +49,8 @@
 
             </div>
             <div class="card-footer text-center">
-                <button type="submit" class="btn btn-primary">Actualizar</button>
-                <button type="reset" class="btn btn-secondary">Reiniciar</button>
+                <button type="submit" class="btn btn-outline-primary">Actualizar Marca</button>
+                <!-- <button type="reset" class="btn btn-secondary">Reiniciar</button> -->
             </div>
         </form>
     </div>

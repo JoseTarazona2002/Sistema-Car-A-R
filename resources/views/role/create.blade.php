@@ -8,35 +8,23 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center">Crear Rol</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('panel') }}">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('roles.index')}}">Roles</a></li>
-        <li class="breadcrumb-item active">Crear rol</li>
-    </ol>
 
-    <div class="card">
-        <div class="card-header">
-            <p>Nota: Los roles son un conjunto de permisos</p>
-        </div>
+    <ul class="pagination pt-3 pb-5">
+        <li class="page-item"><a class="page-link" href="{{ route('panel') }}">Inicio</a></li>
+        <li class="page-item"><a class="page-link" href="{{ route('roles.index') }}">Roles</a></li>
+        <li class="page-item active" aria-current="page">
+        <span class="page-link">Crear Rol</span>
+        </li>
+    </ul>
+
+    <div class="card bg-warning p-2 text-dark bg-opacity-10">
+    <h1 class="mt-4 text-center">Añadir Nuevo Rol</h1>
         <div class="card-body">
             <form action="{{ route('roles.store') }}" method="post">
                 @csrf
-                <!---Nombre de rol---->
-                <div class="row mb-4">
-                    <label for="name" class="col-md-auto col-form-label">Nombre del rol:</label>
-                    <div class="col-md-4">
-                        <input autocomplete="off" type="text" name="name" id="name" class="form-control" value="{{old('name')}}">
-                    </div>
-                    <div class="col-md-4">
-                        @error('name')
-                        <small class="text-danger">{{'*'.$message}}</small>
-                        @enderror
-                    </div>
-                </div>
-
+                
                 <!---Permisos---->
-                <div class="col-12">
+                <div class="col-12 bg-info p-5 bg-opacity-10">
                     <p class="text-muted">Permisos para el rol:</p>
                     @foreach ($permisos as $item)
                     <div class="form-check mb-2">
@@ -49,8 +37,23 @@
                 <small class="text-danger">{{'*'.$message}}</small>
                 @enderror
 
+                <!---Nombre de rol---->
+                <div class="row mx-auto mb-4 mt-2 bg-info p-5 bg-opacity-10">
+                    <label for="name" class="col-md-auto col-form-label">Nombre del rol a Crear:</label>
+                    <div class="col-md-4">
+                        <input autocomplete="off" type="text" name="name" id="name" class="form-control" value="{{old('name')}}">
+                        @error('name')
+                        <small class="text-danger">{{'*'.$message}}</small>
+                        @enderror
+                    </div>
+                    <div class="col-md-4">
+                    <button type="submit" class="btn btn-outline-success">Registrar nuevo Rol</button>
+                    </div>
+                </div>
+
+
                 <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    
                 </div>
 
             </form>

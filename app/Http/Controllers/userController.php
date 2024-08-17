@@ -11,6 +11,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Storage;
 
 class userController extends Controller
 {
@@ -40,32 +41,15 @@ class userController extends Controller
             DB::beginTransaction();
 
             //Encriptar contraseña
+
             $fieldHash = Hash::make($request->password);
+
             //Modificar el valor de password en nuestro request
             $request->merge(['password' => $fieldHash]);
+            
 
-            //Crear usuario
             $user = User::create($request->all());
-
-            //Asignar su rol
             $user->assignRole($request->role);
-
-            DB::commit();
-
-            //Tabla producto
-            $user = new User();
-            if ($request->hasFile('img_path')) {
-                $name = $user->handleUploadImage($request->file('img_path'));
-            } else {
-                $name = null;
-            }
-
-            $user->fill([
-                'name'=> $request->name,
-                'email'=> $request->email,
-                'password'=> $request->password,
-                'img_path'=> $name
-            ]);
 
             $user->save();
 
@@ -110,31 +94,12 @@ class userController extends Controller
                 $request->merge(['password' => $fieldHash]);
             }
 
-            if ($request->hasFile('img_path')) {
-                $name = $user->handleUploadImage($request->file('img_path'));
-
-                //Eliminar si existiese una imagen
-                if(Storage::disk('public')->exists('usuarios/'.$user->img_path)){
-                    Storage::disk('public')->delete('usuarios/'.$user->img_path);
-                }
-
-            } else {
-                $name = $user->img_path;
-            }
-
-            $user->fill([
-                'name'=> $request->name,
-                'email'=> $request->email,
-                'password'=> $request->password,
-                'img_path'=> $name
-            ]);
-
-            $user->save();
-
             $user->update($request->all());
 
             /**Actualizar rol */
             $user->syncRoles([$request->role]);
+
+            $user->save();
 
             DB::commit();
         } catch (Exception $e) {

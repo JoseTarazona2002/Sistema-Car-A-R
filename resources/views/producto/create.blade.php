@@ -14,22 +14,25 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center">Crear Producto</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('panel') }}">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('productos.index')}}">Productos</a></li>
-        <li class="breadcrumb-item active">Crear producto</li>
-    </ol>
 
-    <div class="card">
+    <ul class="pagination pt-3 pb-5">
+        <li class="page-item"><a class="page-link" href="{{ route('panel') }}">Inicio</a></li>
+        <li class="page-item"><a class="page-link" href="{{ route('productos.index')}}">Productos</a></li>
+        <li class="page-item active" aria-current="page">
+        <span class="page-link">Crear Productos</span>
+        </li>
+    </ul>
+
+    <div class="card bg-success p-2 text-dark bg-opacity-10">
+    <h1 class="mt-4 text-center">Añadir Producto</h1>
         <form action="{{ route('productos.store') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="card-body text-bg-light">
+            <div class="card-body text-bg-light bg-success p-2 text-dark bg-opacity-50">
 
-                <div class="row g-4">
+                <div class="row g-3 d-grid col-6 mx-auto">
 
                     <!----Codigo---->
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="codigo" class="form-label">Código:</label>
                         <input type="text" name="codigo" id="codigo" class="form-control" value="{{old('codigo')}}">
                         @error('codigo')
@@ -38,7 +41,7 @@
                     </div>
 
                     <!---Nombre---->
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="nombre" class="form-label">Nombre:</label>
                         <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre')}}">
                         @error('nombre')
@@ -56,7 +59,7 @@
                     </div>
 
                     <!---Fecha de vencimiento---->
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="fecha_vencimiento" class="form-label">Fecha de vencimiento:</label>
                         <input type="date" name="fecha_vencimiento" id="fecha_vencimiento" class="form-control" value="{{old('fecha_vencimiento')}}">
                         @error('fecha_vencimiento')
@@ -65,7 +68,7 @@
                     </div>
 
                     <!---Imagen---->
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="img_path" class="form-label">Imagen:</label>
                         <input type="file" name="img_path" id="img_path" class="form-control" accept="image/*">
                         @error('img_path')
@@ -74,7 +77,7 @@
                     </div>
 
                     <!---Marca---->
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="marca_id" class="form-label">Marca:</label>
                         <select data-size="4" title="Seleccione una marca" data-live-search="true" name="marca_id" id="marca_id" class="form-control selectpicker show-tick">
                             @foreach ($marcas as $item)
@@ -87,7 +90,7 @@
                     </div>
 
                     <!---Categorías---->
-                    <div class="col-md-6">
+                    <div class="col-md-12 mb-5">
                         <label for="categorias" class="form-label">Categorías:</label>
                         <select data-size="4" title="Seleccione las categorías" data-live-search="true" name="categorias[]" id="categorias" class="form-control selectpicker show-tick" multiple>
                             @foreach ($categorias as $item)
@@ -103,7 +106,7 @@
             </div>
             
             <div class="card-footer text-center">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-outline-primary">Añadir Producto</button>
             </div>
         </form>
     </div>

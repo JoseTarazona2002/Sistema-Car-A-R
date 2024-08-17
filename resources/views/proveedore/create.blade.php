@@ -13,21 +13,24 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center">Crear Proveedor</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('panel') }}">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('proveedores.index')}}">Proveedor</a></li>
-        <li class="breadcrumb-item active">Crear proveedor</li>
-    </ol>
+    
+    <ul class="pagination pt-3 pb-5">
+        <li class="page-item"><a class="page-link" href="{{ route('panel') }}">Inicio</a></li>
+        <li class="page-item"><a class="page-link" href="{{ route('proveedores.index')}}">Proveedores</a></li>
+        <li class="page-item active" aria-current="page">
+        <span class="page-link">Crear proveedor</span>
+        </li>
+    </ul>
 
-    <div class="card text-bg-light">
+    <div class="card bg-primary p-2 text-dark bg-opacity-10">
+    <h1 class="mt-4 text-center">Crear Proveedor</h1>
         <form action="{{ route('proveedores.store') }}" method="post">
             @csrf
-            <div class="card-body">
-                <div class="row g-3">
+            <div class="card-body text-bg-light bg-success p-2 text-dark bg-opacity-50">
+                <div class="row g-3 d-grid col-6 mx-auto">
 
                     <!----Tipo de persona----->
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="tipo_persona" class="form-label">Tipo de proveedor:</label>
                         <select class="form-select" name="tipo_persona" id="tipo_persona">
                             <option value="" selected disabled>Seleccione una opción</option>
@@ -61,7 +64,7 @@
                     </div>
 
                     <!--------------Documento------->
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="documento_id" class="form-label">Tipo de documento:</label>
                         <select class="form-select" name="documento_id" id="documento_id">
                             <option value="" selected disabled>Seleccione una opción</option>
@@ -74,7 +77,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="numero_documento" class="form-label">Numero de documento:</label>
                         <input required type="text" name="numero_documento" id="numero_documento" class="form-control" value="{{old('numero_documento')}}">
                         @error('numero_documento')
@@ -85,7 +88,7 @@
 
             </div>
             <div class="card-footer text-center">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-outline-primary">Registrar Proveedor</button>
             </div>
         </form>
     </div>

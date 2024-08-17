@@ -8,17 +8,20 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4 text-center">Crear Usuario</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ route('panel') }}">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('users.index')}}">Usuarios</a></li>
-        <li class="breadcrumb-item active">Crear Usuario</li>
-    </ol>
+    
+    <ul class="pagination pt-3 pb-5">
+        <li class="page-item"><a class="page-link" href="{{ route('panel') }}">Inicio</a></li>
+        <li class="page-item"><a class="page-link" href="{{ route('users.index') }}">Usuarios</a></li>
+        <li class="page-item active" aria-current="page">
+        <span class="page-link">Crear Usuario</span>
+        </li>
+    </ul>
 
-    <div class="card text-bg-light">
-        <form action="{{ route('users.store') }}" method="post" enctype="multipart/form-data">
+    <div class="card bg-success p-2 text-dark bg-opacity-10">
+    <h1 class="mt-4 text-center">Registrar Usuario</h1>
+        <form action="{{ route('users.store') }}" method="post">
             @csrf
-            <div class="card-body">
+            <div class="card-body text-bg-light bg-success p-5 text-dark bg-opacity-25">
 
                 <!---Nombre---->
                 <div class="row mb-4">
@@ -115,27 +118,9 @@
                     </div>
                 </div>
 
-                <!---Imagen---->
-                <div class="row mb-4">
-                    <label for="img_path" class="col-lg-2 col-form-label">Imagen:</label>
-                    <div class="col-lg-4">
-                        <input type="file" name="img_path" id="img_path" class="form-control" accept="image/*">
-                        @error('img_path')
-                        <small class="text-danger">{{'*'.$message}}</small>
-                        @enderror
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="form-text" id="passwordConfirmHelpBlock">
-                            Inserte una imagen de Perfil.
-                        </div>
-                    </div>
-                    
-                </div>
-
-
             </div>
             <div class="card-footer text-center">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-outline-primary">Registrar Usuario</button>
             </div>
         </form>
     </div>
