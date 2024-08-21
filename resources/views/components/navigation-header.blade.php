@@ -1,24 +1,18 @@
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
-    <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="{{ route('panel') }}">Car & Repuestos Services</a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-    <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-        
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-warning">
+
+    <img src="{{ asset('assets/img/file.png') }}" alt="Logo" height="80" class="d-inline-block align-text-top mt-3 mb-3 p-1">
+    <a class="navbar-brand text-dark fst-italic fs-3" href="{{route('panel')}}">    
+            Car: Accesorios & Repuestos
+    </a>
+
+    <div class="ms-5 ps-5">
+        <button class="ms-4 btn btn-link btn-sm order-1 order-lg-0  me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+    </div>
+
+    <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0"></div>
+
+    <form class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4" action="{{route('logout')}}" method="get">
+        <button class="btn btn-dark" type="submit">Cerrar sesión</button>
     </form>
-    <!-- Navbar-->
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{{ route('profile.index') }}">Configuraciones</a></li>
-                <li><a class="dropdown-item" href="#!">Registro de actividad</a></li>
-                <li>
-                    <hr class="dropdown-divider" />
-                </li>
-                <li><a class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a></li>
-            </ul>
-        </li>
-    </ul>
+
 </nav>

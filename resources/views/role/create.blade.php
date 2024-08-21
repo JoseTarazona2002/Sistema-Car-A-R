@@ -24,13 +24,24 @@
                 @csrf
                 
                 <!---Permisos---->
-                <div class="col-12 bg-info p-5 bg-opacity-10">
+                <div class="col-12 bg-info p-5 bg-opacity-10 mx-auto">
                     <p class="text-muted">Permisos para el rol:</p>
                     @foreach ($permisos as $item)
-                    <div class="form-check mb-2">
+                    <!-- <div class="form-check mb-2 border border-2 border-success ">
                         <input type="checkbox" name="permission[]" id="{{$item->id}}" class="form-check-input" value="{{$item->id}}">
                         <label for="{{$item->id}}" class="form-check-label">{{$item->name}}</label>
+                    </div> -->
+
+                    <div class="form-switch form-check-inline m-2">
+                        <input name="permission[]" id="{{$item->id}}" value="{{$item->id}}" class="form-check-input" type="checkbox" role="switch">&nbsp; &nbsp;
+                        <label for="{{$item->id}}" class="form-check-label">{{$item->name}}</label>
                     </div>
+
+                    <!-- <div class="form-check-inline m-3">
+                        <input name="permission[]" id="{{$item->id}}" value="{{$item->id}}" class="btn-check" type="checkbox" autocomplete="off">
+                        <label for="{{$item->id}}" class="btn btn-outline-primary">{{$item->name}}</label><br>
+                    </div> -->
+
                     @endforeach
                 </div>
                 @error('permission')

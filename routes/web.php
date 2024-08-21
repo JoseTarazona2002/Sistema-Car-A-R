@@ -15,6 +15,7 @@ use App\Http\Controllers\roleController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\ventaController;
 use App\Http\Controllers\ListProductoController;
+use App\Http\Controllers\contactoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/home',[homeController::class,'index'])->name('panel');
 Route::get('/lista',[ListProductoController::class,'index'])->name('lista');
+Route::get('/contacto',[contactoController::class,'index'])->name('contacto');
 
 Route::resources([
     'categorias' => categoriaController::class,

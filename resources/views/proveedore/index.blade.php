@@ -53,19 +53,29 @@
                     @foreach ($proveedores as $item)
                     <tr>
                         <td>
-                            {{$item->persona->razon_social}}
+                            {{ $item->persona->estado==1 ? $item->persona->razon_social: ''}}
+                            <!--{{$item->persona->razon_social}}-->
                         </td>
                         <td>
-                            {{$item->persona->direccion}}
+                            {{ $item->persona->estado==1 ? $item->persona->direccion: ''}}
+                            <!-- {{$item->persona->direccion}} -->
                         </td>
                         <td>
-                            <p class="fw-semibold mb-1">{{$item->persona->documento->tipo_documento}}</p>
-                            <p class="text-muted mb-0">{{$item->persona->numero_documento}}</p>
+                            <p class="fw-semibold mb-1">
+                                {{ $item->persona->estado==1 ? $item->persona->documento->tipo_documento: ''}}
+                                <!-- {{$item->persona->documento->tipo_documento}} -->
+                            </p>
+                            <p class="text-muted mb-0">
+                                {{ $item->persona->estado==1 ? $item->persona->numero_documento: ''}}
+                                <!-- {{$item->persona->numero_documento}} -->
+                            </p>
                         </td>
                         <td>
-                            {{$item->persona->tipo_persona}}
+                            {{ $item->persona->estado==1 ? $item->persona->tipo_persona: ''}}
+                            <!-- {{$item->persona->tipo_persona}} -->
                         </td>
                         <td>
+                            @if ($item->persona->estado==1)
                             <a type="button" href="{{route('proveedores.edit',['proveedore'=>$item])}}"
                                     class="btn btn-lg btn-outline-success">
                                 <i class="fa fa-pencil"></i>
@@ -74,6 +84,9 @@
                                         class="btn btn-lg btn-outline-danger">
                                         <i class="fa fa-trash"></i>
                             </button>
+                            @else
+
+                            @endif
 
 
                     <!-- Modal de confirmación-->
@@ -85,7 +98,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    {{ $item->persona->estado == 1 ? '¿Seguro que quieres eliminar el proveedor?' : '¿Seguro que quieres restaurar el proveedor?' }}
+                                    {{ $item->persona->estado == 1 ? '¿Seguro que quieres eliminar el proveedor?' : '' }}
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

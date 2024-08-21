@@ -18,87 +18,59 @@
     </ul>
 
     <div class="card bg-primary p-2 text-dark bg-opacity-25">
-    <h1 class="mt-4 text-center">Editar Usuario</h1>
+    <h1 class="mt-4 text-center">Actualizar Datos de Usuario</h1>
         <form action="{{ route('users.update',['user' => $user]) }}" method="post">
             @method('PATCH')
             @csrf
-            <div class="card-body p-5 text-dark">
+            <div class="row p-5 text-dark">
                 <!---Nombre---->
-                <div class="row mb-4">
-                    <label for="name" class="col-lg-2 col-form-label">Nombres:</label>
-                    <div class="col-lg-4">
+                <div class="row col-6 mb-2">
+                    <label for="name" class="col-lg-4 col-form-label">Nombres:</label>
+                    <div class="col-lg-8">
                         <input type="text" name="name" id="name" class="form-control" value="{{old('name',$user->name)}}">
                     </div>
-                    <div class="col-lg-4">
-                        <div class="form-text">
-                            Escriba un solo nombre
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        @error('name')
+                    @error('name')
                         <small class="text-danger">{{'*'.$message}}</small>
-                        @enderror
-                    </div>
+                    @enderror
                 </div>
 
                 <!---Email---->
-                <div class="row mb-4">
-                    <label for="email" class="col-lg-2 col-form-label">Email:</label>
-                    <div class="col-lg-4">
+                <div class="row col-6 mb-2">
+                    <label for="email" class="col-lg-4 col-form-label">Email:</label>
+                    <div class="col-lg-8">
                         <input type="email" name="email" id="email" class="form-control" value="{{old('email',$user->email)}}">
                     </div>
-                    <div class="col-lg-4">
-                        <div class="form-text">
-                            Dirección de correo eléctronico
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        @error('email')
+                    @error('email')
                         <small class="text-danger">{{'*'.$message}}</small>
-                        @enderror
-                    </div>
+                    @enderror
                 </div>
 
                 <!---Password---->
-                <div class="row mb-4">
-                    <label for="password" class="col-lg-2 col-form-label">Contraseña:</label>
-                    <div class="col-lg-4">
+                <div class="row col-6 mb-2">
+                    <label for="password" class="col-lg-4 col-form-label">Contraseña:</label>
+                    <div class="col-lg-8">
                         <input type="password" name="password" id="password" class="form-control">
                     </div>
-                    <div class="col-lg-4">
-                        <div class="form-text">
-                            Escriba una constraseña segura. Debe incluir números.
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        @error('password')
+                    @error('password')
                         <small class="text-danger">{{'*'.$message}}</small>
-                        @enderror
-                    </div>
+                    @enderror
                 </div>
 
                 <!---Confirm_Password---->
-                <div class="row mb-4">
-                    <label for="password_confirm" class="col-lg-2 col-form-label">Confirmar:</label>
-                    <div class="col-lg-4">
+                <div class="row col-6 mb-2">
+                    <label for="password_confirm" class="col-lg-4 col-form-label">Confirmar:</label>
+                    <div class="col-lg-8">
                         <input type="password" name="password_confirm" id="password_confirm" class="form-control">
                     </div>
-                    <div class="col-lg-4">
-                        <div class="form-text">
-                            Vuelva a escribir su contraseña.
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        @error('password_confirm')
+                    @error('password_confirm')
                         <small class="text-danger">{{'*'.$message}}</small>
-                        @enderror
-                    </div>
+                    @enderror
                 </div>
 
                 <!---Roles---->
-                <div class="row mb-4">
-                    <label for="role" class="col-lg-2 col-form-label">Seleccionar rol:</label>
-                    <div class="col-lg-4">
+                <div class="row col-6 mb-2">
+                    <label for="role" class="col-lg-4 col-form-label">Seleccionar rol:</label>
+                    <div class="col-lg-8">
                         <select name="role" id="role" class="form-select">
                             @foreach ($roles as $item)
                             @if ( in_array($item->name,$user->roles->pluck('name')->toArray()) )
@@ -109,16 +81,9 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="form-text">
-                            Escoja un rol para el usuario.
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        @error('role')
+                    @error('role')
                         <small class="text-danger">{{'*'.$message}}</small>
-                        @enderror
-                    </div>
+                    @enderror
                 </div>
 
             </div>

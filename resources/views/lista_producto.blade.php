@@ -5,12 +5,14 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Sistema de ventas para gestionar compras, ventas
-    clientes, proveedores, productos, categorías, etc. Ideal para pequeños y medianos negocios que deesen 
-    automatizar sus procesos y tener a la mano cualquier información sobre su negocio" />
-    <meta name="author" content="SakCode" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
     <title>Car: Accesorios & Repuestos</title>
-    
+    <style>
+        body {
+            background-image: url("{{ asset('assets/img/background.jpeg') }}");
+        }
+    </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 
@@ -32,11 +34,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 
                 <ul class="nav nav-underline me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{route('panel')}}">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="{{route('lista')}}">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('contacto')}}">Contacto</a>
                     </li>
                 </ul>
 
@@ -51,8 +56,8 @@
     <!---------------------------------------------->
     <div class="container-md mt-5 mb-5 border border-success p-2 mb-2" style="width: 80em; ">
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-            <div class="card">
+        <div class="col ">
+            <div class="card bg-primary-subtle">
             <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -89,7 +94,7 @@
         </div>
 
         <div class="col">
-            <div class="card">
+            <div class="card bg-primary-subtle">
             <div id="carouselExample1" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -133,7 +138,7 @@
         </div>
 
         <div class="col">
-            <div class="card">
+            <div class="card bg-primary-subtle">
             <div id="carouselExample2" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -173,7 +178,7 @@
         </div>
 
         <div class="col">
-            <div class="card">
+            <div class="card bg-primary-subtle">
             <div id="carouselExample4" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -211,7 +216,7 @@
         </div>
 
         <div class="col">
-            <div class="card">
+            <div class="card bg-primary-subtle">
             <div id="carouselExample5" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -251,7 +256,7 @@
         </div>
 
         <div class="col">
-            <div class="card">
+            <div class="card bg-primary-subtle">
             <div id="carouselExample6" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">

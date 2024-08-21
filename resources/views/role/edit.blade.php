@@ -27,17 +27,21 @@
                 
 
                 <!---Permisos---->
-                <div class="row mx-auto mb-4 mt-2 bg-info p-5 bg-opacity-10">
+                <div class="col-12 bg-info p-5 bg-opacity-10 mx-auto">
                     <p class="text-muted">Permisos para el rol:</p>
                     @foreach ($permisos as $item)
                     @if ( in_array($item->id, $role->permissions->pluck('id')->toArray() ) )
-                    <div class="form-check mb-2">
-                        <input checked type="checkbox" name="permission[]" id="{{$item->id}}" class="form-check-input" value="{{$item->id}}">
+                    <div class="form-switch form-check-inline m-2">
+                        <input checked name="permission[]" id="{{$item->id}}" value="{{$item->id}}" class="form-check-input" type="checkbox" role="switch">&nbsp; &nbsp;
                         <label for="{{$item->id}}" class="form-check-label">{{$item->name}}</label>
                     </div>
+                    <!-- <div class="form-check mb-2">
+                        <input checked type="checkbox" name="permission[]" id="{{$item->id}}" class="form-check-input" value="{{$item->id}}">
+                        <label for="{{$item->id}}" class="form-check-label">{{$item->name}}</label>
+                    </div> -->
                     @else
-                    <div class="form-check mb-2">
-                        <input type="checkbox" name="permission[]" id="{{$item->id}}" class="form-check-input" value="{{$item->id}}">
+                    <div class="form-switch form-check-inline m-2">
+                        <input name="permission[]" id="{{$item->id}}" value="{{$item->id}}" class="form-check-input" type="checkbox" role="switch">&nbsp; &nbsp;
                         <label for="{{$item->id}}" class="form-check-label">{{$item->name}}</label>
                     </div>
                     @endif

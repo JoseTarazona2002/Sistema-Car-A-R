@@ -45,8 +45,8 @@
                         <th>Nombre</th>
                         <th>Marca</th>
                         <th>Categorías</th>
-                        <th>Imagen</th>
-                        <th>Acciones</th>
+                        <th width="400px">Imagen</th>
+                        <th width="200px">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,17 +81,17 @@
                         </td>
                         <td>
                         <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#verModal-{{$item->id}}"
+                        <!-- <button type="button" data-bs-toggle="modal" data-bs-target="#verModal-{{$item->id}}"
                                 class="btn btn-lg btn-outline-primary">
                             <i class="fa fa-eye"></i>
-                        </button>
-                        <a type="button" href="{{route('productos.edit',['producto' => $item])}}"
+                        </button> -->
+                        <a title="Editar" type="button" href="{{route('productos.edit',['producto' => $item])}}"
                                 class="btn btn-lg btn-outline-success">
-                            <i class="fa fa-pencil"></i>
+                            <i title="Editar" class="fa fa-pencil"></i>
                         </a>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"
+                        <button title="Eliminar" type="button" data-bs-toggle="modal" data-bs-target="#confirmModal-{{$item->id}}"
                                     class="btn btn-lg btn-outline-danger">
-                                    <i class="fa fa-trash"></i>
+                                    <i title="Eliminar" class="fa fa-trash"></i>
                         </button>
                         </div>
                         </td>

@@ -5,10 +5,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Sistema de ventas para gestionar compras, ventas
-    clientes, proveedores, productos, categorías, etc. Ideal para pequeños y medianos negocios que deesen 
-    automatizar sus procesos y tener a la mano cualquier información sobre su negocio" />
-    <meta name="author" content="SakCode" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
     <title>Car: Accesorios & Repuestos</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -32,11 +30,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 
                 <ul class="nav nav-underline me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{route('panel')}}">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('lista')}}">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('contacto')}}">Contacto</a>
                     </li>
                 </ul>
 

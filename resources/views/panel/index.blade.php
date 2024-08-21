@@ -35,7 +35,11 @@
             <div class="card-body">
                     <div class="row">
                         <div class="col-8">
-                            <i class="fa-solid fa-people-group fa-lg"></i><span class="m-1">Clientes</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-vcard" viewBox="0 0 16 16">
+                        <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5"/>
+                        <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96q.04-.245.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 1 1 12z"/>
+                        </svg>
+                            <span class="fs-5 m-1">Clientes</span>
                         </div>
                         <div class="col-4">
                             <?php
@@ -56,7 +60,11 @@
             <div class="card-body">
                     <div class="row">
                         <div class="col-8">
-                            <i class="fa-solid fa-user-group fa-lg"></i><span class="m-1">Proveedores</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+                        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                        </svg>
+                            <span class="fs-5 m-1">Proveedores</span>
                         </div>
                         <div class="col-4">
                             <?php
@@ -79,7 +87,11 @@
             <div class="card-body">
                     <div class="row">
                         <div class="col-8">
-                            <i class="fa-solid fa-tag fa-lg"></i><span class="m-1">Categorías</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bookmark-check" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+                        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
+                        </svg>
+                            <span class="fs-5 m-1">Categorías</span>
                         </div>
                         <div class="col-4">
                             <?php
@@ -100,7 +112,10 @@
             <div class="card-body">
                     <div class="row">
                         <div class="col-8">
-                            <i class="fa-solid fa-bullhorn fa-lg"></i><span class="m-1">Marcas</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-microsoft" viewBox="0 0 16 16">
+                        <path d="M7.462 0H0v7.19h7.462zM16 0H8.538v7.19H16zM7.462 8.211H0V16h7.462zm8.538 0H8.538V16H16z"/>
+                        </svg>
+                            <span class="fs-5 m-1">Marcas</span>
                         </div>
                         <div class="col-4">
                             <?php
@@ -120,7 +135,10 @@
             <div class="card-body">
                     <div class="row">
                         <div class="col-8">
-                            <i class="fa-brands fa-shopify fa-lg"></i><span class="m-1">Productos</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bag-check-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0m-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+                        </svg>
+                            <span class="fs-5 m-1">Productos</span>
                         </div>
                         <div class="col-4">
                             <?php
@@ -140,7 +158,10 @@
             <div class="card-body">
                     <div class="row">
                         <div class="col-8">
-                            <i class="fa-solid fa-store fa-lg"></i><span class="m-1">Compras</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5z"/>
+                        </svg>
+                            <span class="fs-5 m-1">Compras</span>
                         </div>
                         <div class="col-4">
                             <?php
@@ -160,7 +181,10 @@
             <div class="card-body">
                     <div class="row">
                         <div class="col-8">
-                            <i class="fa-solid fa-store fa-lg"></i><span class="m-1">Ventas</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bag-dash-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M6 9.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1z"/>
+                        </svg>
+                            <span class="fs-5 m-1">Ventas</span>
                         </div>
                         <div class="col-4">
                             <?php
@@ -179,8 +203,13 @@
             <div class="alert alert-warning" role="alert">
             <div class="card-body">
                     <div class="row">
-                        <div class="col-8">
-                            <i class="fa-solid fa-user fa-lg"></i><span class="m-1">Usuarios</span>
+                        <div class="col-8 ">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
+                        <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                        <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.4 5.4 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z"/>
+                        </svg>
+                            <span class="fs-5 m-1">Usuarios</span>
                         </div>
                         <div class="col-4">
                             <?php
@@ -209,4 +238,5 @@
 <!---script src="{{ asset('assets/demo/chart-bar-demo.js') }}"></script--->
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script src="{{ asset('js/datatables-simple-demo.js') }}"></script>
+
 @endpush

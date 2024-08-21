@@ -2,9 +2,10 @@
     <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
-                <div class="card">
-                    <img src="{{ Storage::url('public/usuario/admin-user.jpg')}}" class="img-fluid" alt="...">
+                <div class="card bg-light">
+                    
                     <div class="card-body">
+                        <img width="50%" src="{{ Storage::url('public/usuario/admin-user.jpg')}}" class="img-fluid border border-1 mb-2" alt="...">
                         <h6 class="card-title">Usuario/Administrador</h0>
                         <p class="card-text">{{ auth()->user()->name }}</p>
                     </div>

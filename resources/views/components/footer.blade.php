@@ -3,7 +3,7 @@
 
         <!-- Copyright -->
         <div class="text-center p-3 bg-light">
-            © 2024 Car & Repuestos Services
+            © 2024 Car: Accesorios & Repuestos
         </div>
         <!-- Copyright -->
 </footer>

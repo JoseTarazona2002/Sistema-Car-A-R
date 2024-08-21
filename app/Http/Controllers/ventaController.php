@@ -20,9 +20,7 @@ class ventaController extends Controller
         $this->middleware('permission:mostrar-venta', ['only' => ['show']]);
         $this->middleware('permission:eliminar-venta', ['only' => ['destroy']]);
     }
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $ventas = Venta::with(['comprobante','cliente.persona','user'])
@@ -33,9 +31,7 @@ class ventaController extends Controller
         return view('venta.index',compact('ventas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
 
@@ -64,25 +60,19 @@ class ventaController extends Controller
         return view('venta.create', compact('productos', 'clientes', 'comprobantes'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreVentaRequest $request)
     {
         try{
             DB::beginTransaction();
 
-            //Llenar mi tabla venta
             $venta = Venta::create($request->validated());
 
-            //Llenar mi tabla venta_producto
-            //1. Recuperar los arrays
             $arrayProducto_id = $request->get('arrayidproducto');
             $arrayCantidad = $request->get('arraycantidad');
             $arrayPrecioVenta = $request->get('arrayprecioventa');
             $arrayDescuento = $request->get('arraydescuento');
 
-            //2.Realizar el llenado
+
             $siseArray = count($arrayProducto_id);
             $cont = 0;
 
@@ -117,33 +107,21 @@ class ventaController extends Controller
         return redirect()->route('ventas.index')->with('success','Venta exitosa');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Venta $venta)
     {
         return view('venta.show',compact('venta'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         Venta::where('id',$id)

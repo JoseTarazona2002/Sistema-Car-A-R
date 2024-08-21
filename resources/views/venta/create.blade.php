@@ -440,6 +440,5 @@
         num = num.toString().split('e');
         return signo * (num[0] + 'e' + (num[1] ? (+num[1] - decimales) : -decimales));
     }
-    //Fuente: https://es.stackoverflow.com/questions/48958/redondear-a-dos-decimales-cuando-sea-necesario
 </script>
 @endpush

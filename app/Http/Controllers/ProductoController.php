@@ -21,9 +21,7 @@ class ProductoController extends Controller
         $this->middleware('permission:editar-producto', ['only' => ['edit', 'update']]);
         $this->middleware('permission:eliminar-producto', ['only' => ['destroy']]);
     }
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $productos = Producto::with(['categorias.caracteristica','marca.caracteristica'])->latest()->get();
@@ -31,9 +29,6 @@ class ProductoController extends Controller
         return view('producto.index',compact('productos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $marcas = Marca::join('caracteristicas as c', 'marcas.caracteristica_id', '=', 'c.id')
@@ -50,12 +45,10 @@ class ProductoController extends Controller
         return view('producto.create', compact('marcas', 'categorias'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(StoreProductoRequest $request)
     {
-        //dd($request);
+
         try {
             DB::beginTransaction();
             //Tabla producto
@@ -77,7 +70,6 @@ class ProductoController extends Controller
 
             $producto->save();
 
-            //Tabla categoría producto
             $categorias = $request->get('categorias');
             $producto->categorias()->attach($categorias);
 
@@ -90,17 +82,13 @@ class ProductoController extends Controller
         return redirect()->route('productos.index')->with('success', 'Producto registrado');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(Producto $producto)
     {
         $marcas = Marca::join('caracteristicas as c', 'marcas.caracteristica_id', '=', 'c.id')
@@ -116,9 +104,7 @@ class ProductoController extends Controller
         return view('producto.edit',compact('producto','marcas','categorias'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(UpdateProductoRequest $request, Producto $producto)
     {
         try{
@@ -159,9 +145,6 @@ class ProductoController extends Controller
         return redirect()->route('productos.index')->with('success','Producto editado');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         

@@ -60,7 +60,11 @@
                             <p class="text-muted mb-0">{{$item->numero_comprobante}}</p>
                         </td>
                         <td>
-                            <p class="fw-semibold mb-1">{{ ucfirst($item->cliente->persona->tipo_persona) }}</p>
+                            @if ($item->cliente->persona->tipo_persona!=null)
+                                <p class="fw-semibold mb-1">{{ ucfirst($item->cliente->persona->tipo_persona) }}</p>
+                            @else
+                                <p class="fw-semibold mb-1">Dado de Baja</p>   
+                            @endif
                             <p class="text-muted mb-0">{{$item->cliente->persona->razon_social}}</p>
                         </td>
                         <td>
@@ -127,8 +131,7 @@
 @push('js')
 <script src="{{ asset('js/simple-datatables@latest.js') }}" type="text/javascript"></script>
 <script>
-    // Simple-DataTables
-    // https://github.com/fiduswriter/Simple-DataTables/wiki
+
     window.addEventListener('DOMContentLoaded', event => {
         const dataTable = new simpleDatatables.DataTable("#datatablesSimple", {})
     });
